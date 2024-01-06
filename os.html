@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating System Chatbot</title>
+    <meta charset="UTF-8">
+    <title>SPidy - web</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="SP (2).png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+         .navbar-nav .nav-link,
+    .dropdown-menu .dropdown-item {
+        color: white !important;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        color: black !important; /* Change color on hover */
+    }
+      body {
+    margin: 0;
+  }
+        #chatbox {
+            width: 30cm;
+            height: 10cm;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            color: white;
+            margin-left: 12%;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0.4cm;
+        }
+
+        #userInput {
+            margin-top: 10px;
+            width: 30.4cm;
+            height: 1cm;
+            border-radius: 0.2cm;
+        }
+        .btn2{
+            width: 3cm;
+            height: 1cm;
+            background-color: #00BFFF;
+            color: black;
+            border-radius: 0.3cm;
+            font-family: 'Times New Roman', Times, serif;
+            border-color: rgb(121, 187, 245);
+            box-shadow: 0.1cm;
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="blob"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="SP (2).png" alt="Bootstrap" width="30" height="24">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index11.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="note.html">Notes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Chat With BOT
+                        </a>
+                        <ul class="dropdown-menu"
+                            style="background-color: rgba(0, 0, 0, 0.5); color: white;">
+                            <li><a class="dropdown-item" href="os.html">Operating System</a></li>
+                            <li><a class="dropdown-item" href="#">Computer networks</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Under process</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-disabled="true">Hacksprint</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <center>
+        <div class="main" style=" margin-top: 5%; height: auto; width: 100%;">
+            <a class="navbar-brand" href="#">
+                <img src="SP (2).png" alt="Bootstrap" width="40" height="40">
+            </a>
+            <div class="card-body">
+                <!-- Remove inline style and add class "custom-title" -->
+                <p class="quotes" style="font-size: 0.5cm; font-family: 'Courier New', Courier, monospace; color: white;">SPidy - CHAT Operating System</p>
+                <p class="card-text"></p>
+            </div>
+
+        </div>
+    </center>
+    <div id="chatbox"></div>  <center>
+    <div id="inputBox">
+        <input type="text" id="userInput" placeholder="..  Type your command..."><br><br>
+        <button onclick="sendMessage()" class="btn2">Send</button>
+    </div>
+</center>
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('userInput');
+
+        function sendMessage() {
+            const userMessage = userInput.value;
+            appendMessage('User: ' + userMessage);
+
+            const botResponse = processUserCommand(userMessage);
+            appendMessage('Bot: ' + botResponse);
+
+            userInput.value = '';
+        }
+
+        function appendMessage(message) {
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            chatbox.appendChild(messageElement);
+
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+        function appendMessage(message) {
+    const messageElement = document.createElement('p');
+    
+    messageElement.innerHTML = message.replace(/\n/g, '<br>');
+    
+    chatbox.appendChild(messageElement);
+
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+        function processUserCommand(command) {
+    command = command.trim().toLowerCase();
+
+    if ((command=='what is an operating system') || (command=='what are operating systems')|| (command=='what is operating systems')){
+        return 'An operating system is a program that acts as an intermediary between a user of a computer and the computer hardware.<br> It is a software that manages the computer hardware.<br> OS allows the user to execute programs in a convenient and efficient manner.<br> Mainframe operating systems are designed primarily to optimize utilization of hardware.<br> Personal computer (PC) operating systems support complex games, business applications, and everything in between.<br>Operating systems for mobile computers provide an environment in which a user can easily interface with the computer to execute programs.<br>Thus, some operating systems are designed to be convenient, others to be '+
+'efficient, and others to be some combination of the two.';
+    
+    } 
+    else if((command === 'hi')||(command==='hello')){
+        return 'Hello ! How can i help you';
+    }else if ((command === 'types of operating systems') || (command === 'types of os')) {
+        return 'Common types of operating systems include Windows, macOS, Linux, and Unix.';
+    } else if ((command === 'goals of operating systems') || (command === 'aims of operating systems') || (command === 'goals of os') || (command === 'aims of os')){
+        return '1.Execute user programs and make problem solving easier <br>2.Make the computer system more convenient to use <br>3.Use the computer hardware in an efficient manner.';
+    } else if ((command === 'views of operating systems') || (command === 'views of os') || (command === 'view points of os') || (command === 'view points of operating systems')){
+        return 'There are two views:User views and system views<br><br>1. User Views:-<br>' +'• If the user is using standalone system, then OS is designed for ease of use and high' +'performances. Here resource utilization is not given importance.<br>' +'• If the users are at different terminals connected to a mainframe or minicomputers,'+'by sharing information and resources, then the OS is designed to maximize '+'resource utilization. OS is designed such that the CPU time, memory and i/o are '+'used efficiently and no single user takes more than the resource allotted to them. '+'• If the users are in workstations, connected to networks and servers, then the user '+'have a system unit of their own and shares resources and files with other systems. '+'Here the OS is designed for both ease of use and resource availability (files).<br> '+'• Users of hand held systems, expects the OS to be designed for ease of use and '+'performance per amount of battery life. '+'Some computers have little or no user interface, such as embedded computers in '+'devices and automobiles.<br>'+'2. System Views:-<br>'+'Operating system can be viewed as a resource allocator and control program. <br>'+'i. Resource allocator - The OS acts as a manager of hardware and software '+'resources. CPU time, memory space, file-storage space, I/O devices, shared files '+'etc. are the different resources required during execution of a program. There can '+'be conflicting request for these resources by different programs running in same '+'system. The OS assigns the resources to the requesting program depending on the '+'priority. <br>'+'ii. Control Program – The OS is a control program and manage the execution of '+'user program to prevent errors and improper use of the computer.'
+    } else if ((command === 'multiprogramming in operating systems') || (command === 'multiprogramming in os')){
+        return 'One of the most important aspects of operating systems is the ability to multiprogram.<br> A single user cannot keep either the CPU or the I/O devices busy at all times.<br> Multiprogramming increases CPU utilization by organizing jobs, so that the CPU always has one to execute.<br>• The operating system picks and begins to execute one of the jobs in memory. <br>Eventually, the job may have to wait for some task, such as an I/O operation, to complete.<br>• In a non-multiprogrammed system, the CPU would sit idle. <br>• In a multiprogrammed system, the operating system simply switches to, and executes, another job. When that job needs to wait, the CPU is switched to another job, and so on. <br>• Eventually, the first job finishes waiting and gets the CPU back. Thus the CPU is never idle. <br>• Multiprogrammed systems provide an environment in which the various system resources (for example, CPU, memory, and peripheral devices) are utilized effectively, but they do not provide for user interaction with the computer system. <br>• In Time sharing (or multitasking) systems, a single CPU executes multiple jobs by switching among them, but the switches occur so frequently that the users can interact with each program while it is running.<br> • Time sharing requires an interactive (or hands-on) computer system, which provides direct communication between the user and the system. <br>• The user gives instructions to the operating system or to a program directly, using a input device such as a keyboard or a mouse. <br>• As the system switches rapidly from one user to the next, each user is given the impression that the entire computer system is dedicated to his use only, even though it is being shared among many users.'
+    }else if((command==='os operations')||(command==='operating system operations')||(command==='operations of os')||(command==='operations of operating system')){
+        return 'There are two types:Dual Mode Operation and Timer:<br>a) Dual-Mode Operation <br>The system can be assumed to work in two separate modes of operation: <br>• user mode and <br>• kernel mode (supervisor mode, system mode, or privileged mode). <br>A hardware bit of the computer, called the mode bit, is used to indicate the current mode: kernel (0) or user (1).<br> With the mode bit, we are able to distinguish between a task that is executed by the operating system and one that is executed by the user. When the computer system is executing a user application, the system is in user mode. When a user application requests a service from the operating system (via a system call), the transition from user to kernel mode takes place. At system boot time, the hardware starts in kernel mode. The operating system is then loaded and starts user applications in user mode. Whenever a trap or interrupt occurs, the hardware switches from user mode to kernel mode (that is, changes the mode bit from 1 to 0). Thus, whenever the operating system gains control of the computer, it is in kernel mode. <br>b) Timer <br>Operating system uses timer to control the CPU. A user program cannot hold CPU for a long time, this is prevented with the help of timer. A timer can be set to interrupt the computer after a specified period.<br> The period may be fixed (for example, 1/60 second) or variable (for example, from 1 millisecond to 1 second). <br>Fixed timer – After a fixed time, the process under execution is interrupted.<br> Variable timer – Interrupt occurs after varying interval.';
+    }else if((command==='os services')||(command==='operating system services')||(command==='services of os')||(command==='services of operating system')){
+        return 'Operating-System Services :<br>An operating system provides an environment for the execution of programs. It provides certain services to programs and to the users of those programs. <br>OS provide services for the users of the system, including:         <br>• User Interfaces - Means by which users can issue commands to the system. Command-line interface ( e.g. sh, csh, ksh, tcsh, etc.), a Graphical User Interface (e.g. Windows, X-Windows, KDE, Gnome, etc.), <br>• Program Execution - The OS must be able to load a program into RAM, run the program, and terminate the program, either normally or abnormally. <br>• I/O Operations - The OS is responsible for transferring data to and from I/O devices, including keyboards, terminals, printers, and files. For specific devices, special functions are provided(device drivers) by OS. <br>• File-System Manipulation – Programs need to read and write files or directories. The services required to create or delete files, search for a file, list the contents of a file and change the file permissions are provided by OS. <br>• Communications - Inter-process communications, IPC, either between processes running on the same processor, or between processes running on separate processors or separate machines. May be implemented by using the service of OSlike shared memory or message passing. <br>• Error Detection - Both hardware and software errors must be detected and handled appropriately by the OS. Errors may occur in the CPU and memory hardware (such as power failure and memory error), in I/O devices (such as a parity error on tape, a connection failure on a network, or lack of paper in the printer), and in the user program (such as an arithmetic overflow, an attempt to access an illegal memory location). OS provide services for the efficient operation of the system, including: <br>• Resource Allocation – Resources like CPU cycles, main memory, storage space, and I/O devices must be allocated to multiple users and multiple jobs at the same time. <br>• Accounting – There are services in OS to keep track of system activity and resource usage, either for billing purposes or for statistical record keeping that can be used to optimize future performance. <br>• Protection and Security – The owners of information(file) in multiuser or networked computer system may want to control the use of that information. When several separate processes execute concurrently, one process should not interfere with other or with OS. Protection involves ensuring that all access to system resources is controlled. Security of the system from outsiders must also be done, by means of a password.';
+    }else if((command==='os system calls')||(command==='operating system calls')||(command==='system calls of os')||(command==='system calls of operating system')){
+        return 'System calls and its types:<br><br>• System calls is a means to access the services of the operating system. <br>•Generally written in C or C++, although some are written in assembly for optimal performance. <br>• The below figure illustrates the sequence of system calls required to copy a file content from one file(input file) to another file (output file)<br>The system calls can be categorized into six major categories:<br>• Process Control <br>• File management <br>• Device management <br>• Information management <br>• Communications <br>• Protection ';
+    }else if((command==='os structure')||(command==='structure of os')||(command==='operating system structure')||(command==='structure of operating system')){
+        return 'OS structure must be carefully designed. The task of OS is divided into small components and then interfaced to work together. <br>1) Simple Structure <br>Many operating systems do not have well-defined structures. They started as small, simple, and limited systems and then grew beyond their original scope. Ex: MS-DOS. In MS-DOS, the interfaces and levels of functionality are not well separated. Application programs can access basic I/O routines to write directly to the display and disk drives. Such freedom leaves MS-DOS in bad state and the entire system can crash down when user programs fail.<br>2) Layered Approach <br>The OS is broken into number of layers (levels). Each layer rests on the layer below it, and relies on the services provided by the next lower layer. <br>• Bottom layer(layer 0) is the hardware and the topmost layer is the user interface. <br>• A typical layer, consists of data structure and routines that can be invoked by higher-level layer. <br><br>Advantages of layered approach is simplicity of construction and debugging. -> The layers are selected so that each uses functions and services of only lower-level layers. -> So simplifies debugging and system verification. -> The layers are debugged one by one from the lowest and if any layer doesn’t work, then error is due to that layer only, as the lower layers are already debugged. -> Thus the design and implementation is simplified. -> A layer need not know how its lower level layers are implemented. Thus hides the operations from higher layers. <br><br>Disadvantages of layered approach: <br>• The various layers must be appropriately defined, as a layer can use only lower level layers. <br>• Less efficient than other types, because any interaction with layer 0 required from top layer. The system call should pass through all the layers and finally to layer 0. This is an overhead. <br>3) Microkernels <br>• The basic idea behind micro kernels is to remove all non-essential services from the kernel, thus making the kernel as small and efficient as possible. <br>• The removed services are implemented as system applications. <br>• Most microkernels provide basic process and memory management, and message passing between other services. <br>• Benefit of microkernel - System expansion can also be easier, because it only involves adding more system applications, not rebuilding a new kernel. <br>• Mach was the first and most widely known microkernel, and now forms a major component of Mac OSX. <br><br>Disadvantage of Microkernel is, it suffers from reduction in performance due to increases system function overhead.<br><br>4) Modules <br>• Modern OS development is object-oriented, with a relatively small core kernel and a set of modules which can be linked in dynamically. <br>• Modules are similar to layers in that each subsystem has clearly defined tasks and interfaces, but any module is free to contact any other module, eliminating the problems of going through multiple intermediary layers. <br>• The kernel is relatively small in this architecture, similar to microkernels, but the kernel does not have to implement message passing since modules are free to contact each other directly. Ex: Solaris, Linux and MacOSX. <br>• The Max OSX architecture relies on the Mach microkernel for basic system management services, and the BSD kernel for additional services. Application services and dynamically loadable modules ( kernel extensions ) provide the rest of the OS functionality. <br>• Resembles layered system, but a module can call any other module. <br>• Resembles microkernel, the primary module has only core functions and the knowledge of how to load and communicate with other modules.';
+    }
+    else {
+        return 'The answer for this question is not yet loaded. Sorry for the inconvenience';
+    }
+}
+
+
+
+
+    </script>
+       <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,1,300&display=swap" rel="stylesheet">
+       <!-- partial -->
+       <script src="./script.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+           crossorigin="anonymous"></script>
+</body>
+</html>

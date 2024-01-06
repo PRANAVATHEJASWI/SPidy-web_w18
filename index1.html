@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="bumblebee">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="SP (2).png" type="image/x-icon">
+
+    <!--- Tailwind CSS & Daisy UI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel="icon" href="SP (2).png">
+    <title>SPidy - web</title>
+</head>
+<style>
+    .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Adjust the z-index as needed */
+}
+.navbar-nav .nav-link,
+    .dropdown-menu .dropdown-item {
+        color: white !important;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        color: black !important; /* Change color on hover */
+    }
+
+    .card {
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        margin: 1cm;
+        align-items: center;
+    }
+
+    .card-title {
+        font-size: 2cm;
+    }
+
+    @media screen and (max-width: 767px) {
+    .card {
+        width: 100%;
+        margin: 1cm 0;
+    }
+
+    .card-body p.quotes {
+        font-size: 0.5cm !important;
+    }
+
+    .text-center {
+        margin: 5% !important;
+    }
+
+    .main {
+        height: auto;
+        width: 100%;
+    }
+}
+
+    .card-title.custom-title {
+        font-size: 2cm !important;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <header>
+            <h1 style="color: white;">To-do List</h1>
+            <!-- Error message -->
+            <div class="alert-message"></div>
+            <div class="input-section">
+                <input type="text" placeholder="Add a todo . . ." class="input input-bordered input-secondary w-full max-w-xs" />
+                <input type="date" class="input input-bordered input-secondary w-full max-w-xs schedule-date" />
+                <button class="btn btn-secondary add-task-button">
+                    <i class="bx bx-plus bx-sm"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="todos-filter">
+            <div class="dropdown">
+                <label tabindex="0" class="btn m-1" style="color: white !important;">Filter</label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li onclick="filterTodos('all')"><a>All</a></li>
+                    <li onclick="filterTodos('pending')"><a>Pending</a></li>
+                    <li onclick="filterTodos('completed')"><a>Completed</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-secondary delete-all-btn">
+                Delete All
+            </button>
+        </div>
+
+        <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="todos-list-body">
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Navigation Bar Code -->
+    <div id="overlay"></div>
+    <div id="blob"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="SP (2).png" alt="Bootstrap" width="30" height="24">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index11.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="note.html">Notes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Chat With BOT
+                        </a>
+                        <ul class="dropdown-menu"
+                            style="background-color: rgba(0, 0, 0, 0.5); color: white;">
+                            <li><a class="dropdown-item" href="os.html">Operating System</a></li>
+                            <li><a class="dropdown-item" href="#">Computer networks</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Under process</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-disabled="true">Hacksprint</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!--Theme switcher-->
+
+    <script src="./script.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/theme_switcher.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+</html>
+
